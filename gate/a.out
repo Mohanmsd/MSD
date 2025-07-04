@@ -1,0 +1,43 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00814058 .scope module, "and_gate_assign_tb" "and_gate_assign_tb" 2 1;
+ .timescale 0 0;
+v00817578_0 .var "a", 0 0;
+v008175D0_0 .var "b", 0 0;
+v00817628_0 .net "c", 0 0, L_008140E0; 1 drivers
+S_008126C8 .scope module, "and2" "and_gate_p" 2 4, 3 1, S_00814058;
+ .timescale 0 0;
+L_008140E0 .functor AND 1, v00817578_0, v008175D0_0, C4<1>, C4<1>;
+v00812750_0 .net "a", 0 0, v00817578_0; 1 drivers
+v008127A8_0 .net "b", 0 0, v008175D0_0; 1 drivers
+v00817520_0 .alias "c", 0 0, v00817628_0;
+    .scope S_00814058;
+T_0 ;
+    %vpi_call 2 11 "$dumpfile", "and_gate_assign_tb.vcd";
+    %vpi_call 2 12 "$dumpvars";
+    %vpi_call 2 14 "$monitor", "Time=%0t |a=%b b=%b c%b", $time, v00817578_0, v008175D0_0, v00817628_0;
+    %set/v v00817578_0, 0, 1;
+    %set/v v008175D0_0, 0, 1;
+    %delay 10, 0;
+    %set/v v00817578_0, 0, 1;
+    %set/v v008175D0_0, 1, 1;
+    %delay 10, 0;
+    %set/v v00817578_0, 1, 1;
+    %set/v v008175D0_0, 0, 1;
+    %delay 10, 0;
+    %set/v v00817578_0, 1, 1;
+    %set/v v008175D0_0, 1, 1;
+    %delay 10, 0;
+    %vpi_call 2 22 "$finish";
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "and_gate_assign_tb.v";
+    "and_gate_p.v";
